@@ -62,3 +62,21 @@ class Role:
 
     def __init__(self) -> None:
         self.types = []
+
+    def to_dict(self) -> dict:
+        res_dict = {}
+        if self.title:
+            res_dict['title'] = self.title
+        if self.year:
+            res_dict['year'] = self.year
+        if self.character_name:
+            res_dict['character name'] = self.character_name
+            if self.as_character:
+                res_dict['character name'] = res_dict['character name'] + ' (%s)' % (self.as_character,)
+        if self.series_name:
+            res_dict['series_name'] = self.series_name
+        if self.credit:
+            res_dict['credit'] = self.credit
+        for (i, type) in enumerate(self.types, 1):
+            res_dict['type' + str(i)] = type
+        return res_dict

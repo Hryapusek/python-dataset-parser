@@ -106,7 +106,7 @@ class RoleParser:
 
     @staticmethod
     def __has_type(rest_line: list):
-        return rest_line[0][0] == '('
+        return len(rest_line) > 0 and rest_line[0][0] == '('
     
     @staticmethod
     def __extract_type(role: Role, rest_line: list):
